@@ -25,14 +25,79 @@ function dañoDado(){
 let transformacion = 0;
 let transformacionRival = 0;
 
-function eleccionDePjs(personajes){
-    let eleccionJugador = prompt("1: Pinguino\n2: Dino\n3: Koala\n4: Babosa\n5: Libélula\n6: Tópo\n7: Quiral\n8: Pepe\n9: Murcielago\n10: Rana");
-    jugador = personajes[eleccionJugador - 1];
+// function eleccionDePjs(personajes){
+//     let eleccionJugador = prompt("1: Pinguino\n2: Dino\n3: Koala\n4: Babosa\n5: Libélula\n6: Tópo\n7: Quiral\n8: Pepe\n9: Murcielago\n10: Rana");
+//     jugador = personajes[eleccionJugador - 1];
 
+//     let eleccionMaquina = Math.floor(Math.random()*personajes.length);
+//     rival = personajes[eleccionMaquina];
+//     document.querySelector(".statsJugador").innerText = `${jugador.nombre}   vida: ${jugador.vida}`;
+//     document.querySelector(".statsRival").innerText = `${rival.nombre}  vida: ${rival.vida}`;
+// }
+
+function iniciarBatalla(){
     let eleccionMaquina = Math.floor(Math.random()*personajes.length);
     rival = personajes[eleccionMaquina];
+
     document.querySelector(".statsJugador").innerText = `${jugador.nombre}   vida: ${jugador.vida}`;
     document.querySelector(".statsRival").innerText = `${rival.nombre}  vida: ${rival.vida}`;
+
+    document.getElementById("pantalla-seleccion").style.display = "none";
+    document.getElementById("pantalla-combate").style.display = "block";
+}
+
+function eleccionDePjs(personajes){
+    let btnP1 = document.getElementById("boton-p1");
+    let btnP2 = document.getElementById("boton-p2");
+    let btnP3 = document.getElementById("boton-p3");
+    let btnP4 = document.getElementById("boton-p4");
+    let btnP5 = document.getElementById("boton-p5");
+    let btnP6 = document.getElementById("boton-p6");
+    let btnP7 = document.getElementById("boton-p7");
+    let btnP8 = document.getElementById("boton-p8");
+    let btnP9 = document.getElementById("boton-p9");
+    let btnP10 = document.getElementById("boton-p10");
+
+    btnP1.addEventListener("click", (e) =>{
+        jugador = personajes[0];
+        iniciarBatalla();
+    })
+    btnP2.addEventListener("click", (e) =>{
+        jugador = personajes[1];
+        iniciarBatalla();
+    })
+    btnP3.addEventListener("click", (e) =>{
+        jugador = personajes[2];
+        iniciarBatalla();
+    })
+    btnP4.addEventListener("click", (e) =>{
+        jugador = personajes[3];
+        iniciarBatalla();
+    })
+    btnP5.addEventListener("click", (e) =>{
+        jugador = personajes[4];
+        iniciarBatalla();
+    })
+    btnP6.addEventListener("click", (e) =>{
+        jugador = personajes[5];
+        iniciarBatalla();
+    })
+    btnP7.addEventListener("click", (e) =>{
+        jugador = personajes[6];
+        iniciarBatalla();
+    })
+    btnP8.addEventListener("click", (e) =>{
+        jugador = personajes[7];
+        iniciarBatalla();
+    })
+    btnP9.addEventListener("click", (e) =>{
+        jugador = personajes[8];
+        iniciarBatalla();
+    })
+    btnP10.addEventListener("click", (e) =>{
+        jugador = personajes[9];
+        iniciarBatalla();
+    })
 }
 
 function combate(){
@@ -93,6 +158,8 @@ function combate(){
     }
     }) 
 }
+
+document.getElementById("pantalla-combate").style.display = "none";
 
 eleccionDePjs(personajes);
 combate();

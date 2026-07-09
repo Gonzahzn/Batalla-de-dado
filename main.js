@@ -103,6 +103,9 @@ function eleccionDePjs(personajes){
 function combate(){
 
     // sadsasadasfsaf
+    let reiniciar = document.getElementById("volver_a_jugar")
+    reiniciar.style.display = "none";
+
     let tirarDado = document.getElementById("dado");
     tirarDado.addEventListener("click", (e) =>{
     let golpeJugador = dañoDado();
@@ -115,7 +118,9 @@ function combate(){
             rival.vida = 0;
             document.querySelector(".statsRival").innerText = `${rival.nombre}  vida: ${rival.vida}`;
             console.log(`¡Victoria!`)
-            tirarDado.disabled = true;
+            // tirarDado.disabled = true;
+            tirarDado.style.display = "none";
+            reiniciar.style.display = "block";
             return;
         }
     }
@@ -127,7 +132,9 @@ function combate(){
     }
     if(rival.vida <= 0){
         alert("Victoria");
-        tirarDado.disabled = true;
+        // tirarDado.disabled = true;
+        tirarDado.style.display = "none";
+        reiniciar.style.display = "block";
         return;
     }
 
@@ -141,7 +148,9 @@ function combate(){
             jugador.vida = 0;
             console.log(`¡Derrota!`)
             document.querySelector(".statsJugador").innerText = `${jugador.nombre}   vida: ${jugador.vida}`
-            tirarDado.disabled = true;
+            // tirarDado.disabled = true;
+            tirarDado.style.display = "none";
+            reiniciar.style.display = "block";
             return;
         }
     }
@@ -153,9 +162,25 @@ function combate(){
     }
     if(jugador.vida <= 0){
         alert("Perdiste");
-        tirarDado.disabled = true;
+        // tirarDado.disabled = true;
+        tirarDado.style.display = "none";
+        reiniciar.style.display = "block";
         return;
     }
+    })
+    reiniciar.addEventListener("click", (e) =>{
+        jugador.vida = 5000;
+        rival.vida = 5000;
+        transformacion = 0;
+        transformacionRival = 0;
+        tirarDado.style.display = "block";
+        reiniciar.style.display = "none";
+
+        document.querySelector(".acumJugador").innerText = 0;
+        document.querySelector(".acumRival").innerText = 0;
+
+        document.getElementById("pantalla-seleccion").style.display = "block";
+        document.getElementById("pantalla-combate").style.display = "none";
     }) 
 }
 

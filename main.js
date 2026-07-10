@@ -25,16 +25,6 @@ function dañoDado(){
 let transformacion = 0;
 let transformacionRival = 0;
 
-// function eleccionDePjs(personajes){
-//     let eleccionJugador = prompt("1: Pinguino\n2: Dino\n3: Koala\n4: Babosa\n5: Libélula\n6: Tópo\n7: Quiral\n8: Pepe\n9: Murcielago\n10: Rana");
-//     jugador = personajes[eleccionJugador - 1];
-
-//     let eleccionMaquina = Math.floor(Math.random()*personajes.length);
-//     rival = personajes[eleccionMaquina];
-//     document.querySelector(".statsJugador").innerText = `${jugador.nombre}   vida: ${jugador.vida}`;
-//     document.querySelector(".statsRival").innerText = `${rival.nombre}  vida: ${rival.vida}`;
-// }
-
 function iniciarBatalla(){
     let eleccionMaquina = Math.floor(Math.random()*personajes.length);
     rival = personajes[eleccionMaquina];
@@ -99,56 +89,20 @@ function eleccionDePjs(personajes){
         iniciarBatalla();
     })
 }
-
-function combate(){
-
-    // sadsasadasfsaf
-    let reiniciar = document.getElementById("volver_a_jugar")
-    reiniciar.style.display = "none";
-
-    let tirarDado = document.getElementById("dado");
-    tirarDado.addEventListener("click", (e) =>{
-    let golpeJugador = dañoDado();
-    if(golpeJugador === 7){
-        transformacion += 1;
-        document.querySelector(".acumJugador").innerText = `${transformacion}`;
-        console.log(`Acumulador de ${jugador.nombre}: ${transformacion}`);
-        if(transformacion === 3){
-            alert("Evoluciooooooón");
-            rival.vida = 0;
-            document.querySelector(".statsRival").innerText = `${rival.nombre}  vida: ${rival.vida}`;
-            console.log(`¡Victoria!`)
-            // tirarDado.disabled = true;
-            tirarDado.style.display = "none";
-            reiniciar.style.display = "block";
-            return;
-        }
-    }
-    else{
-        let dañoFinalJugador = jugador.daño * golpeJugador;
-        rival.vida -= dañoFinalJugador;
-        console.log(`${jugador.nombre} hace ${dañoFinalJugador} de daño. Vida del rival: ${rival.vida}`);
-        document.querySelector(".statsRival").innerText = `${rival.nombre}  vida: ${rival.vida}`;
-    }
-    if(rival.vida <= 0){
-        alert("Victoria");
-        // tirarDado.disabled = true;
-        tirarDado.style.display = "none";
-        reiniciar.style.display = "block";
-        return;
-    }
+// dasadadasasad
+function turnoMaquina(tirarDado, reiniciar){
+    if(jugador.vida <= 0) return;
 
     let golpeRival = dañoDado();
     if(golpeRival === 7){
         transformacionRival += 1;
-        console.log(`Acumulador de ${rival.nombre}: ${transformacionRival}`);
         document.querySelector(".acumRival").innerText = `${transformacionRival}`;
+        console.log(`Acumulador de ${rival.nombre}: ${transformacionRival}`);
         if(transformacionRival === 3){
             alert("Evoluciooooooon");
             jugador.vida = 0;
-            console.log(`¡Derrota!`)
-            document.querySelector(".statsJugador").innerText = `${jugador.nombre}   vida: ${jugador.vida}`
-            // tirarDado.disabled = true;
+            console.log(`¡Derrota!`);
+            document.querySelector(".statsJugador").innerText = `${jugador.nombre}   vida: ${jugador.vida}`;
             tirarDado.style.display = "none";
             reiniciar.style.display = "block";
             return;
@@ -162,12 +116,56 @@ function combate(){
     }
     if(jugador.vida <= 0){
         alert("Perdiste");
-        // tirarDado.disabled = true;
         tirarDado.style.display = "none";
         reiniciar.style.display = "block";
         return;
     }
-    })
+    tirarDado.disabled = false;
+}
+
+
+
+
+function combate(){
+    let reiniciar = document.getElementById("volver_a_jugar")
+    reiniciar.style.display = "none";
+    let tirarDado = document.getElementById("dado");
+
+    tirarDado.addEventListener("click", (e) =>{
+    tirarDado.disabled = true;
+
+    let golpeJugador = dañoDado();
+    if(golpeJugador === 7){
+        transformacion += 1;
+        document.querySelector(".acumJugador").innerText = `${transformacion}`;
+        console.log(`Acumulador de ${jugador.nombre}: ${transformacion}`);
+        if(transformacion === 3){
+            alert("Evoluciooooooón");
+            rival.vida = 0;
+            document.querySelector(".statsRival").innerText = `${rival.nombre}  vida: ${rival.vida}`;
+            console.log(`¡Victoria!`)
+            tirarDado.style.display = "none";
+            reiniciar.style.display = "block";
+            return;
+        }
+    }
+    else{
+        let dañoFinalJugador = jugador.daño * golpeJugador;
+        rival.vida -= dañoFinalJugador;
+        console.log(`${jugador.nombre} hace ${dañoFinalJugador} de daño. Vida del rival: ${rival.vida}`);
+        document.querySelector(".statsRival").innerText = `${rival.nombre}  vida: ${rival.vida}`;
+    }
+    if(rival.vida <= 0){
+        alert("Victoria");
+        tirarDado.style.display = "none";
+        reiniciar.style.display = "block";
+        return;
+    }
+    setTimeout(() =>{
+        turnoMaquina(tirarDado, reiniciar);
+    }, 1500);
+    });
+
     reiniciar.addEventListener("click", (e) =>{
         jugador.vida = 5000;
         rival.vida = 5000;

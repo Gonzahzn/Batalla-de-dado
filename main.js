@@ -1,15 +1,15 @@
 
 let personajes = [
-    {id:1, nombre:"Pinguino", vida:5000, daño:100},
-    {id:2, nombre:"Dino", vida:5000, daño:100}, 
-    {id:3, nombre:"Koala", vida:5000, daño:100},
-    {id:4, nombre:"Babosa", vida:5000, daño:100},
-    {id:5, nombre:"Libélula", vida:5000, daño:100},
-    {id:6, nombre:"Tópo", vida:5000, daño:100},
-    {id:7, nombre:"Quiral", vida:5000, daño:100},
-    {id:8, nombre:"Pepe", vida:5000, daño:100}, 
-    {id:9, nombre:"Murcielago", vida:5000, daño:100},
-    {id:10, nombre:"Rana", vida:5000, daño:100}
+    {id:1, nombre:"Pinguino", vida:5000, daño:100, imagen: "Imagenes/p1.png"},
+    {id:2, nombre:"Dino", vida:5000, daño:100, imagen: "Imagenes/p2.png"}, 
+    {id:3, nombre:"Koala", vida:5000, daño:100, imagen: "Imagenes/p3.png"},
+    {id:4, nombre:"Babosa", vida:5000, daño:100, imagen: "Imagenes/p4.png"},
+    {id:5, nombre:"Libélula", vida:5000, daño:100, imagen: "Imagenes/p5.png"},
+    {id:6, nombre:"Tópo", vida:5000, daño:100, imagen: "Imagenes/p6.png"},
+    {id:7, nombre:"Quiral", vida:5000, daño:100, imagen: "Imagenes/p7.png"},
+    {id:8, nombre:"Pepe", vida:5000, daño:100, imagen: "Imagenes/p8.png"}, 
+    {id:9, nombre:"Murcielago", vida:5000, daño:100, imagen: "Imagenes/p9.png"},
+    {id:10, nombre:"Rana", vida:5000, daño:100, imagen: "Imagenes/p10.png"}
     ];
 
 let jugador;
@@ -31,6 +31,9 @@ function iniciarBatalla(){
 
     document.querySelector(".statsJugador").innerText = `${jugador.nombre}   vida: ${jugador.vida}`;
     document.querySelector(".statsRival").innerText = `${rival.nombre}  vida: ${rival.vida}`;
+
+    document.getElementById("img-pj-jugador").src = jugador.imagen;
+    document.getElementById("img-pj-rival").src = rival.imagen;
 
     document.getElementById("pantalla-seleccion").style.display = "none";
     document.getElementById("pantalla-combate").style.display = "block";

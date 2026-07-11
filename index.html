@@ -95,12 +95,43 @@
         </div>
     </div>
     <div id="pantalla-combate">
-        <h2 class="statsJugador">Jugador</h2>
-        <h3 class="acumJugador">AcumJug</h3>
-        <h2 class="statsRival">Rival</h2>
-        <h3 class="acumRival">AcumRiv</h3>
-        <button id="dado" class="tiroDado">Tirar dado</button>
-        <button id="volver_a_jugar" class="reiniciar_combate">Volver a jugar</button>
+        <div class="interfaz-sup">
+            <div class="status-box jugador-box">
+                <h2 class="statsJugador">Jugador vida: 5000</h2>
+                <div class="contenedor-acum">
+                    <span>Evolución:</span>
+                    <h3 class="acumJugador">0</h3>
+                </div>
+            </div>
+            <div class="status-box rival-box">
+                <h2 class="statsRival">Rival Vida: 5000</h2>
+                <div class="contenedor-acum">
+                    <span>Evolución:</span>
+                    <h3 class="acumRival">0</h3>
+                </div>
+            </div>
+        </div>
+        <div class="campo-batalla">
+            <div class="slot-pj slot-jugador">
+                <div class="base-pj">
+                    <img id="img-pj-jugador" src="" alt="">
+                </div>
+            </div>
+            <div class="zona-central">
+                <div id="contenedor-dado" class="ubicacion-dado">
+                    <span id="valor-dado">🎲</span>
+                </div>
+            </div>
+            <div class="slot-pj slot-rival">
+                <div class="base-pj">
+                    <img id="img-pj-rival" src="" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="interfaz-inf">
+            <button id="dado" class="tiroDado">Tirar dado</button>
+            <button id="volver_a_jugar" class="reiniciar_combate">Volver a jugar</button>
+        </div>
     </div>
 
     

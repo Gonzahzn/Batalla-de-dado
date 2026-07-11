@@ -15,6 +15,14 @@ let personajes = [
 let jugador;
 let rival;
 
+let vida_jugador = document.getElementById("barra-vida-jug");
+let vida_rival = document.getElementById("barra-vida-riv");
+
+function calcularVida(personaje){
+    let porcentajeVida = ((personaje.vida * 100) / 5000);
+    return porcentajeVida;
+}
+
 function dañoDado(){
     let random = Math.floor(Math.random()*8);
     let multiplicador = [0, 1, 2, 3, 4, 5, 6, 7];
@@ -104,7 +112,8 @@ function turnoMaquina(tirarDado, reiniciar){
         if(transformacionRival === 3){
             alert("Evoluciooooooon");
             jugador.vida = 0;
-            console.log(`¡Derrota!`);
+            // console.log(`¡Derrota!`);
+            vida_jugador.style.width = `${calcularVida(jugador)}%`;
             document.querySelector(".statsJugador").innerText = `${jugador.nombre}   vida: ${jugador.vida}`;
             tirarDado.style.display = "none";
             reiniciar.style.display = "block";
@@ -114,6 +123,7 @@ function turnoMaquina(tirarDado, reiniciar){
     else{
         let dañoFinalRival = rival.daño * golpeRival;
         jugador.vida -= dañoFinalRival;
+        vida_jugador.style.width = `${calcularVida(jugador)}%`;
         console.log(`${rival.nombre} hace ${dañoFinalRival} de daño. Vida del Jugador: ${jugador.vida}`);
         document.querySelector(".statsJugador").innerText = `${jugador.nombre}   vida: ${jugador.vida}`;
     }
@@ -145,6 +155,7 @@ function combate(){
         if(transformacion === 3){
             alert("Evoluciooooooón");
             rival.vida = 0;
+            vida_rival.style.width = `${calcularVida(rival)}%`;
             document.querySelector(".statsRival").innerText = `${rival.nombre}  vida: ${rival.vida}`;
             console.log(`¡Victoria!`)
             tirarDado.style.display = "none";
@@ -155,6 +166,7 @@ function combate(){
     else{
         let dañoFinalJugador = jugador.daño * golpeJugador;
         rival.vida -= dañoFinalJugador;
+        vida_rival.style.width = `${calcularVida(rival)}%`;
         console.log(`${jugador.nombre} hace ${dañoFinalJugador} de daño. Vida del rival: ${rival.vida}`);
         document.querySelector(".statsRival").innerText = `${rival.nombre}  vida: ${rival.vida}`;
     }
@@ -176,6 +188,9 @@ function combate(){
         transformacionRival = 0;
         tirarDado.style.display = "block";
         reiniciar.style.display = "none";
+
+        vida_jugador.style.width = "100%";
+        vida_rival.style.width = "100%";
 
         document.querySelector(".acumJugador").innerText = 0;
         document.querySelector(".acumRival").innerText = 0;

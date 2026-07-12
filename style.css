@@ -66,12 +66,12 @@
   gap: 40px;
 }
 .status-box{
-  background: #ffff;
+  /* background: #ffff; */
   padding: 15px;
-  border: 2px solid #ddd;
-  border-radius: 8px;
+  /* border: 2px solid #ddd; */
+  /* border-radius: 8px; */
   flex: 1;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  /* box-shadow: 0 4px 6px rgba(0,0,0,0.05); */
 }
 
 .contenedor-vida{
@@ -170,3 +170,37 @@
 .reiniciar_combate:hover{
   background-color: #c0392b;
 }
+
+
+#pantalla-combate.evo-jugador{
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  transition: background-color 0.5s ease;
+}
+
+#pantalla-combate.evo-rival{
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  transition: background-color 0.5s ease;
+}
+#pantalla-combate.evo-jugador .zona-central{
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+#pantalla-combate.evo-rival .zona-central{
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+#pantalla-combate.evo-jugador #img-pj-jugador {
+    transform: scale(1.2);
+    transition: transform 0.8s ease-out;
+    z-index: 10;
+}
+
+#pantalla-combate.evo-rival #img-pj-rival {
+    transform: scale(1.2);
+    transition: transform 0.8s ease-out;
+    z-index: 10;
+  }

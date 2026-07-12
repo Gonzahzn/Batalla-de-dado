@@ -109,8 +109,9 @@ function turnoMaquina(tirarDado, reiniciar){
         transformacionRival += 1;
         document.querySelector(".acumRival").innerText = `${transformacionRival}`;
         console.log(`Acumulador de ${rival.nombre}: ${transformacionRival}`);
-        if(transformacionRival === 3){
+        if(transformacionRival === 1){
             alert("Evoluciooooooon");
+            document.getElementById("pantalla-combate").classList.add("evo-rival");
             jugador.vida = 0;
             // console.log(`¡Derrota!`);
             vida_jugador.style.width = `${calcularVida(jugador)}%`;
@@ -152,7 +153,8 @@ function combate(){
         transformacion += 1;
         document.querySelector(".acumJugador").innerText = `${transformacion}`;
         console.log(`Acumulador de ${jugador.nombre}: ${transformacion}`);
-        if(transformacion === 3){
+        if(transformacion === 1){
+            document.getElementById("pantalla-combate").classList.add("evo-jugador");
             alert("Evoluciooooooón");
             rival.vida = 0;
             vida_rival.style.width = `${calcularVida(rival)}%`;
@@ -197,6 +199,8 @@ function combate(){
 
         document.getElementById("pantalla-seleccion").style.display = "block";
         document.getElementById("pantalla-combate").style.display = "none";
+        document.getElementById("pantalla-combate").classList.remove("evo-jugador");
+        document.getElementById("pantalla-combate").classList.remove("evo-rival");
     }) 
 }
 

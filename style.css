@@ -51,7 +51,9 @@
   max-width: 1200px;
   margin: 40px auto;
   padding: 20px;
-  background-color: #fafafa;
+  /* background-color: #fafafa; */
+  background-image: url("Imagenes/fondo - copia.png");
+  background-size: cover;
   border: 3px solid #333;
   border-radius: 12px;
   display: flex;
@@ -88,7 +90,7 @@
   transition: width 0.5s ease-out;
 }
 
-.contendero-acum{
+.contenedor-acum{
   display: flex;
   align-items: center;
   gap: 10px;
@@ -101,7 +103,7 @@
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   justify-items: center;
-  height: 300px;
+  height: 400px;
 }
 
 .base-pj{
@@ -194,13 +196,13 @@
 }
 
 #pantalla-combate.evo-jugador #img-pj-jugador {
-    transform: scale(1.2);
+    transform: scale(1.0);
     transition: transform 0.8s ease-out;
     z-index: 10;
 }
 
 #pantalla-combate.evo-rival #img-pj-rival {
-    transform: scale(1.2);
+    transform: scale(1.0);
     transition: transform 0.8s ease-out;
     z-index: 10;
   }

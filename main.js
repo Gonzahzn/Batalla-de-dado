@@ -1,15 +1,15 @@
 
 let personajes = [
-    {id:1, nombre:"Pinguino", vida:5000, daño:100, imagen: "Imagenes/p1.png"},
-    {id:2, nombre:"Dino", vida:5000, daño:100, imagen: "Imagenes/p2.png"}, 
-    {id:3, nombre:"Koala", vida:5000, daño:100, imagen: "Imagenes/p3.png"},
-    {id:4, nombre:"Babosa", vida:5000, daño:100, imagen: "Imagenes/p4.png"},
-    {id:5, nombre:"Libélula", vida:5000, daño:100, imagen: "Imagenes/p5.png"},
-    {id:6, nombre:"Tópo", vida:5000, daño:100, imagen: "Imagenes/p6.png"},
-    {id:7, nombre:"Quiral", vida:5000, daño:100, imagen: "Imagenes/p7.png"},
-    {id:8, nombre:"Pepe", vida:5000, daño:100, imagen: "Imagenes/p8.png"}, 
-    {id:9, nombre:"Murcielago", vida:5000, daño:100, imagen: "Imagenes/p9.png"},
-    {id:10, nombre:"Rana", vida:5000, daño:100, imagen: "Imagenes/p10.png"}
+    {id:1, nombre:"Pinguino", vida:5000, daño:100, imagen: "Imagenes/pinguino1.png", imgEvo: "Imagenes/pinguinoSuper.png"},
+    {id:2, nombre:"Dino", vida:5000, daño:100, imagen: "Imagenes/raya1.png", imgEvo: "Imagenes/rayaSuper.png"}, 
+    {id:3, nombre:"Koala", vida:5000, daño:100, imagen: "Imagenes/koala1.png", imgEvo: "Imagenes/koalaSuper.png"},
+    {id:4, nombre:"Babosa", vida:5000, daño:100, imagen: "Imagenes/babosa1.png", imgEvo: "Imagenes/babosaSuper.png"},
+    {id:5, nombre:"Libélula", vida:5000, daño:100, imagen: "Imagenes/libelula1.png", imgEvo: "Imagenes/libelulaSuper.png"},
+    {id:6, nombre:"Tópo", vida:5000, daño:100, imagen: "Imagenes/topo1.png", imgEvo: "Imagenes/topoSuper.png"},
+    {id:7, nombre:"Quiral", vida:5000, daño:100, imagen: "Imagenes/quiral1.png", imgEvo: "Imagenes/quiralSuper.png"},
+    {id:8, nombre:"Pepe", vida:5000, daño:100, imagen: "Imagenes/pepe1.png", imgEvo: "Imagenes/pepeSuper.png"}, 
+    {id:9, nombre:"Murcielago", vida:5000, daño:100, imagen: "Imagenes/murcielago1.png", imgEvo: "Imagenes/murcielagoSuper.png"},
+    {id:10, nombre:"Rana", vida:5000, daño:100, imagen: "Imagenes/rana1.png", imgEvo: "Imagenes/ranaSuper.png"}
     ];
 
 let jugador;
@@ -112,6 +112,7 @@ function turnoMaquina(tirarDado, reiniciar){
         if(transformacionRival === 1){
             alert("Evoluciooooooon");
             document.getElementById("pantalla-combate").classList.add("evo-rival");
+            document.getElementById("img-pj-rival").src = rival.imgEvo;
             jugador.vida = 0;
             // console.log(`¡Derrota!`);
             vida_jugador.style.width = `${calcularVida(jugador)}%`;
@@ -154,8 +155,9 @@ function combate(){
         document.querySelector(".acumJugador").innerText = `${transformacion}`;
         console.log(`Acumulador de ${jugador.nombre}: ${transformacion}`);
         if(transformacion === 1){
-            document.getElementById("pantalla-combate").classList.add("evo-jugador");
             alert("Evoluciooooooón");
+            document.getElementById("pantalla-combate").classList.add("evo-jugador");
+            document.getElementById("img-pj-jugador").src = jugador.imgEvo;
             rival.vida = 0;
             vida_rival.style.width = `${calcularVida(rival)}%`;
             document.querySelector(".statsRival").innerText = `${rival.nombre}  vida: ${rival.vida}`;

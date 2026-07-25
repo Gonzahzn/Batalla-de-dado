@@ -1,7 +1,7 @@
 
 let personajes = [
     {id:1, nombre:"Pinguino", vida:5000, daño:100, imagen: "Imagenes/pinguino1.png", imgEvo: "Imagenes/pinguinoSuper.png"},
-    {id:2, nombre:"Dino", vida:5000, daño:100, imagen: "Imagenes/raya1.png", imgEvo: "Imagenes/rayaSuper.png"}, 
+    {id:2, nombre:"Raya", vida:5000, daño:100, imagen: "Imagenes/raya1.png", imgEvo: "Imagenes/rayaSuper.png"}, 
     {id:3, nombre:"Koala", vida:5000, daño:100, imagen: "Imagenes/koala1.png", imgEvo: "Imagenes/koalaSuper.png"},
     {id:4, nombre:"Babosa", vida:5000, daño:100, imagen: "Imagenes/babosa1.png", imgEvo: "Imagenes/babosaSuper.png"},
     {id:5, nombre:"Libélula", vida:5000, daño:100, imagen: "Imagenes/libelula1.png", imgEvo: "Imagenes/libelulaSuper.png"},
@@ -110,15 +110,22 @@ function turnoMaquina(tirarDado, reiniciar){
         document.querySelector(".acumRival").innerText = `${transformacionRival}`;
         console.log(`Acumulador de ${rival.nombre}: ${transformacionRival}`);
         if(transformacionRival === 1){
-            alert("Evoluciooooooon");
+            // alert("Evoluciooooooon");
             document.getElementById("pantalla-combate").classList.add("evo-rival");
-            document.getElementById("img-pj-rival").src = rival.imgEvo;
-            jugador.vida = 0;
-            // console.log(`¡Derrota!`);
-            vida_jugador.style.width = `${calcularVida(jugador)}%`;
-            document.querySelector(".statsJugador").innerText = `${jugador.nombre}   vida: ${jugador.vida}`;
-            tirarDado.style.display = "none";
-            reiniciar.style.display = "block";
+            // document.getElementById("img-pj-rival").src = rival.imgEvo;
+            setTimeout(() => {
+                document.getElementById("img-pj-rival").src = rival.imgEvo;
+            }, 800);
+
+            setTimeout(() => {
+                jugador.vida = 0;
+                // console.log(`¡Derrota!`);
+                vida_jugador.style.width = `${calcularVida(jugador)}%`;
+                document.querySelector(".statsJugador").innerText = `${jugador.nombre}   vida: ${jugador.vida}`;
+                tirarDado.style.display = "none";
+                reiniciar.style.display = "block";
+            }, 2002);
+
             return;
         }
     }
@@ -130,7 +137,7 @@ function turnoMaquina(tirarDado, reiniciar){
         document.querySelector(".statsJugador").innerText = `${jugador.nombre}   vida: ${jugador.vida}`;
     }
     if(jugador.vida <= 0){
-        alert("Perdiste");
+        // alert("Perdiste");
         tirarDado.style.display = "none";
         reiniciar.style.display = "block";
         return;
@@ -155,15 +162,20 @@ function combate(){
         document.querySelector(".acumJugador").innerText = `${transformacion}`;
         console.log(`Acumulador de ${jugador.nombre}: ${transformacion}`);
         if(transformacion === 1){
-            alert("Evoluciooooooón");
+            // alert("Evoluciooooooón");
             document.getElementById("pantalla-combate").classList.add("evo-jugador");
-            document.getElementById("img-pj-jugador").src = jugador.imgEvo;
-            rival.vida = 0;
-            vida_rival.style.width = `${calcularVida(rival)}%`;
-            document.querySelector(".statsRival").innerText = `${rival.nombre}  vida: ${rival.vida}`;
-            console.log(`¡Victoria!`)
-            tirarDado.style.display = "none";
-            reiniciar.style.display = "block";
+            // document.getElementById("img-pj-jugador").src = jugador.imgEvo;
+            setTimeout(() => {
+                document.getElementById("img-pj-jugador").src = jugador.imgEvo;
+            }, 800);
+            setTimeout(() =>{
+                rival.vida = 0;
+                vida_rival.style.width = `${calcularVida(rival)}%`;
+                document.querySelector(".statsRival").innerText = `${rival.nombre}  vida: ${rival.vida}`;
+                console.log(`¡Victoria!`)
+                tirarDado.style.display = "none";
+                reiniciar.style.display = "block";
+            }, 2002);
             return;
         }
     }
@@ -175,7 +187,7 @@ function combate(){
         document.querySelector(".statsRival").innerText = `${rival.nombre}  vida: ${rival.vida}`;
     }
     if(rival.vida <= 0){
-        alert("Victoria");
+        // alert("Victoria");
         tirarDado.style.display = "none";
         reiniciar.style.display = "block";
         return;
